@@ -1,6 +1,7 @@
-package services;
+package ng.edu.binghamuni.inventory.services;
 
-import com.example.test.domain.Drink;
+import ng.edu.binghamuni.inventory.domain.Drink;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

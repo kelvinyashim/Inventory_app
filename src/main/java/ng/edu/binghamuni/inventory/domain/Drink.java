@@ -1,9 +1,10 @@
-package com.example.test.domain;
+package ng.edu.binghamuni.inventory.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -11,13 +12,20 @@ import java.util.List;
 public class Drink {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private int capacity;
     private int price;
+@CreationTimestamp
+private Date created_date;
+
+@UpdateTimestamp
+
+private Date updated_date;
 
     @OneToMany
-    private List<com.example.test.domain.Ingredients> ingredients;
+    private List<Ingredients> ingredients;
     public String getColor() {
         return color;
     }
@@ -72,7 +80,7 @@ public class Drink {
         return name;
     }
 
-    public Drink(Long id, String name, int capacity, String color, String type, String company, int price) {
+    public Drink(Long id, Date created_date, Date updated_date, List<Ingredients> ingredients, String name, int capacity, String color, String type, String company, int price) {
         this.id = id;
         this.name = name;
         this.capacity = capacity;
@@ -80,6 +88,25 @@ public class Drink {
         this.type = type;
         this.company = company;
         this.price = price;
+        this.ingredients = ingredients;
+        this.created_date = created_date;
+        this.updated_date = updated_date;
+    }
+
+    public Date getCreated_date() {
+        return created_date;
+    }
+
+    public void setCreated_date(Date created_date) {
+        this.created_date = created_date;
+    }
+
+    public Date getUpdated_date() {
+        return updated_date;
+    }
+
+    public void setUpdated_date(Date updated_date) {
+        this.updated_date = updated_date;
     }
 
     public Drink() {

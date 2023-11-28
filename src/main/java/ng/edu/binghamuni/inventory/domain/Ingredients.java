@@ -1,4 +1,4 @@
-package com.example.test.domain;
+package ng.edu.binghamuni.inventory.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
